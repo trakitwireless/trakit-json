@@ -10,6 +10,13 @@ export type codified = string;
 /**
  * 
  **/
+export type JSONValue = string | number | boolean
+                        | JSONValue[]
+                        | { [key: string]: JSONValue };
+
+/**
+ * 
+ **/
 export type byte = number;
 /**
  * 
@@ -47,4 +54,3 @@ export type single = number;
  * 
  **/
 export type double = number;
-

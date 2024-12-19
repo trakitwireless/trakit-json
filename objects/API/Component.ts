@@ -1,17 +1,11 @@
-﻿import { int } from './Types';
+﻿import { int, JSONValue } from './Types';
 import { IRequestable } from './Interfaces/IRequestable';
+import { ISerializable } from './Interfaces/ISerializable';
 
 /**
  * Any derived class can/should be serialized and given to a user.
  **/
-export abstract class Component implements IRequestable {
-	//public static boolean operator >(Component a, Component b) => a?.v?.FirstOrDefault() > b?.v?.FirstOrDefault();
-	//public static boolean operator >=(Component a, Component b) => a?.v?.FirstOrDefault() >= b?.v?.FirstOrDefault();
-	//public static boolean operator <(Component a, Component b) => a?.v?.FirstOrDefault() < b?.v?.FirstOrDefault();
-	//public static boolean operator <=(Component a, Component b) => a?.v?.FirstOrDefault() <= b?.v?.FirstOrDefault();
-	//public static boolean operator ==(Component a, Component b) => a?.v?.FirstOrDefault() == b?.v?.FirstOrDefault();
-	//public static boolean operator !=(Component a, Component b) => a?.v?.FirstOrDefault() != b?.v?.FirstOrDefault();
-
+export abstract class Component implements IRequestable, ISerializable {
 	/**
 	 * Object version keys used to validate synchronization for all object properties.
 	 **/
@@ -25,4 +19,14 @@ export abstract class Component implements IRequestable {
 	 * @returns A string unique for this type of object.
 	 **/
 	public abstract GetKey(): string;
+
+	/**
+	 * 
+	 **/
+	public abstract toJSON(): JSONValue;
+	/**
+	 * 
+	 * @param input 
+	 **/
+	public abstract fromJSON(input: JSONValue): void;
 }
